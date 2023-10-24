@@ -1,5 +1,7 @@
+import Nav from '@components/Nav';
+import Provider from '@components/Provider';
 import '@styles/globals.css';
-//import '@public/assets3/images/grid.svg'
+
 
 export const metadata = {
   title: "Boss Prompts",
@@ -17,6 +19,7 @@ const RootLayout = ({ children }) => {
         </div>
 
         <main className="app">
+          <Nav />
           {children}
         </main>
       </body>
