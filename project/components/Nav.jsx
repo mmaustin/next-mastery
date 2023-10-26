@@ -7,17 +7,17 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
 
-  const isUserLoggedIn = false;
+  const isUserLoggedIn = true;
 
-  const [providers, setProviders] = useState(null);
+  // const [providers, setProviders] = useState(null);
 
-  useEffect(() => {
-    const setProvided = async () => {
-      const response = await getProviders();
-      setProviders(response);
-    }
-    setProvided();
-  }, [])
+  // useEffect(() => {
+  //   const setProvided = async () => {
+  //     const response = await getProviders();
+  //     setProviders(response);
+  //   }
+  //   setProvided();
+  // }, [])
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -32,6 +32,7 @@ const Nav = () => {
         <p className="logo_text">Boss Prompts</p>
       </Link>
 
+      {/* Desktop */}
       <div className="sm:flex hidden ">
         {isUserLoggedIn ? (
           <div className="flex gap-3 md:gap-5">
@@ -51,7 +52,7 @@ const Nav = () => {
           </div>
         ) : (
           <>
-            {providers &&
+            {/* {providers &&
               Object.values(providers).map(provider => (
                 <button
                   type="button"
@@ -61,10 +62,28 @@ const Nav = () => {
                 >
                   Sign In
                 </button>
-              ))}
+              ))} */}
           </>
         )}
       </div>
+
+      {/* Mobile */}
+      <div className="sm:hidden flex relative">
+        {isUserLoggedIn ? (
+          <div className="flex">
+            <Image
+              src="/assets3/images/logo.svg"
+              width={37}
+              height={37}
+              className="rounded-full"
+              alt="profile"
+            />
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+
     </nav>
   )
 }
