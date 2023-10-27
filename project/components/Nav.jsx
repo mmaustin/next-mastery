@@ -90,6 +90,23 @@ const Nav = () => {
                 >
                   My Profile
                 </Link>
+                <Link
+                  href="/create-prompt"
+                  className="dropdown_link"
+                  onClick={() => settoggleDropdown(false)}
+                >
+                  Create Prompt
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    settoggleDropdown(false);
+                    signIn();
+                  }}
+                  className="mt-5 w-full black_btn"
+                >
+                  Sign OUt
+                </button>
               </div>
             )}
           </div>
