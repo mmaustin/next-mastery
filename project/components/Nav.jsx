@@ -25,6 +25,7 @@ const Nav = () => {
         <Image
           src="/assets3/images/logo.svg"
           alt="Boss Prompts Logo"
+          priority
           width={30}
           height={30}
           className="object-contain"
