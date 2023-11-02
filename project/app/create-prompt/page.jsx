@@ -2,7 +2,7 @@
 
 import Form from "@components/Form";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
@@ -22,7 +22,7 @@ const CreatePrompt = () => {
     setSubmitting(true);
 
     try {
-      const response = await fetch('/api/prompt/new',
+      const response = await fetch("/api/prompt/new",
         {
           method: "POST",
           // headers: {
@@ -35,7 +35,7 @@ const CreatePrompt = () => {
             tag: post.tag,
           })
         })
-      if (response.ok) {
+      if (response) {
         router.push('/');
       }
 
