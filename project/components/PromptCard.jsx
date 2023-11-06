@@ -8,7 +8,13 @@ import { useState } from "react";
 
 const PromptCard = ({ post, handleTagClick }) => {
 
-  const [copied, setCopied] = useState("")
+  const [copied, setCopied] = useState("");
+
+  const handleCopy = () => {
+    setCopied(post.prompt);
+    navigator.clipboard.writeText(post.prompt);
+    setTimeout(() => setCopied(""), 3000);
+  }
 
   return (
     <div className="prompt_card">
@@ -30,7 +36,7 @@ const PromptCard = ({ post, handleTagClick }) => {
             </p>
           </div>
         </div>
-        <div className="copy_btn" onClick={() => { }}>
+        <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={copied === post.prompt
               ? '/assets3/icons/tick.svg'
@@ -43,7 +49,9 @@ const PromptCard = ({ post, handleTagClick }) => {
         </div>
       </div>
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
-      <p className="font-inter text-sm blue_gradient cursor-pointer">{post.tag}</p>
+      <p className="font-inter text-sm blue_gradient cursor-pointer" onClick={() => handleTagClick && handleTagClick(post.tag)}>
+        {post.tag}
+      </p>
     </div>
   )
 }
