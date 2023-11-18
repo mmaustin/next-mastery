@@ -28,7 +28,16 @@ const MyProfile = () => {
   };
 
   const handleDelete = async (post) => {
-
+    const hasConfirmed = confirm("Do you really want to delete tis prompt?");
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/promp/${post._id.toString()}`, {
+          method: 'DELETE'
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
